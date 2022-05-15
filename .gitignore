@@ -140,5 +140,3 @@ lstm/sst/*_model/**
 # Ignore 
 *logs/
 
-# Don't ignore gitignore
-!.gitignore
