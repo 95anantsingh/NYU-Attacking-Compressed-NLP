@@ -20,8 +20,10 @@ Download following files to the data folder:
 
 `eval_triggers.py`- used to transfer the universal adversarial attacks between the different models
 
+The pretrained models are stored on drive: `https://drive.google.com/drive/folders/1oEwxZ-nZF8JZFAWJYrkfQT3h4_7jqbBx?usp=sharing`
+please download them to the respective folders.
 
--To train the models(you shouldnt need to do this, the pretrained models are stored):
+-To train the models (you shouldnt need to do this):
 
 `train_lstm.py` - used to train the main lstm model
 
