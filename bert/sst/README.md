@@ -10,7 +10,7 @@
 
 `eval_triggers.py`- used to transfer the universal adversarial attacks between the different models
 
-The pretrained models are stored on drive: `https://drive.google.com/drive/folders/1rRQbFGqcvVtkpkEx-U1TLYG7hDyWP4nk?usp=sharing`
+The pretrained models are stored on drive: `https://drive.google.com/drive/folders/136WqY5vOqTWkP0aeE2uF40ti7ecKLQ-P?usp=sharing`
 please download them to the respective folders.
 
 -To train the models(you shouldnt need to do this):
