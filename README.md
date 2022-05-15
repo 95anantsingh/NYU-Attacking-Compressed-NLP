@@ -4,10 +4,8 @@ How this repo is structured:
 
 -> LSTM based SST attacks folder
 
-Please use the environment.yml to get the environment setup correctly
+Please use the `environment.yml` with conda to get the environment setup correctly
 
+Additionally the big pretrained models are stored on a drive link: please download them and store them to the corresponding location, more details in individual READMEs.
 
-Additionally the pretrained models are stored on this drive link: please download them and store them to the corresponding location.
-
-
-The instruction to run the code in each folder is in a separate README inside the folder.
+The instruction to run the code and description of the files in each folder is in a separate `README.md` inside the folder.
