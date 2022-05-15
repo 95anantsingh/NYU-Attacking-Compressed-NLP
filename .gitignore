@@ -126,11 +126,11 @@ dmypy.json
 cython_debug/
 
 # Ignore models
-*_model
+*_model/
 
 # Ignore Data
-*data
+*data/
 
 # Ignore 
-*logs
-*.md
+*logs/
+
