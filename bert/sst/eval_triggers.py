@@ -50,14 +50,39 @@ elif args.attacked == 'distil':
     model = DistilBertForSequenceClassification.from_pretrained('./bert_'+args.attacked+'_sst_model', return_dict=True)
 elif args.attacked == 'distilled':
     tokenizer = BertTokenizer.from_pretrained('./bert_'+args.attacked+'_sst_model')
-    model = BertForSequenceClassification.from_pretrained('./bert_main_sst_model', return_dict=True)    
-    student =  deleteEncodingLayers(model, [1,5,8,12])
+    stud = BertForSequenceClassification.from_pretrained('./bert_main_sst_model', return_dict=True)    
+    model =  deleteEncodingLayers(stud, [1,5,8,12])
     m = torch.load('./bert_'+args.attacked+'_sst_model/pytorch_model.bin')
-    student.load_state_dict(m)
+    model.load_state_dict(m)
 elif args.attacked == 'pruned':
     tokenizer = BertTokenizer.from_pretrained('./bert_main_sst_model')
-    model = BertForSequenceClassification.from_pretrained('./bert_'+args.attacked+'_sst_model', return_dict=True)
+    from nn_pruning.patch_coordinator import SparseTrainingArguments
+    from nn_pruning.patch_coordinator import ModelPatchingCoordinator
 
+    sparse_args = SparseTrainingArguments(
+        dense_pruning_method="topK:1d_alt", 
+        attention_pruning_method= "topK", 
+        initial_threshold= 1.0, 
+        final_threshold= 0.5, 
+        initial_warmup= 1,
+        final_warmup= 3,
+        attention_block_rows=32,
+        attention_block_cols=32,
+        attention_output_with_dense= 0
+    )
+    mpc = ModelPatchingCoordinator(
+        sparse_args=sparse_args, 
+        device=device, 
+        cache_dir="checkpoints", 
+        logit_names="logits", 
+        teacher_constructor=None)
+    model = BertForSequenceClassification.from_pretrained('./bert_main_sst_model', return_dict=True) 
+    mpc.patch_model(model)
+
+    m = torch.load('./bert_'+args.attacked+'_sst_model/pytorch_model.bin')
+    model.load_state_dict(m)
+    mpc.compile_model(model)
+    
 model.eval().to(device)
 
 utils.add_hooks(model)

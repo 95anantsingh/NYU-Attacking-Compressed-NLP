@@ -90,20 +90,6 @@ def main():
             model.cuda()
             model.load_state_dict(torch.load(f))
         device = 'cuda'
-    else:
-        model_path = "./lstm_main_sst_model/w2v_model.th"
-        model = LstmClassifier(word_embeddings, encoder, vocab)
-        
-        with open(model_path, 'rb') as f:
-            model.cuda()
-            model.load_state_dict(torch.load(f))
-            
-        model.cpu()
-        model = torch.quantization.quantize_dynamic(
-            model,{nn.LSTM}, dtype=torch.qint8
-        )
-        device = 'cpu'
-        print("Quantized!")
         
     model.train().to(device)
     print(model)

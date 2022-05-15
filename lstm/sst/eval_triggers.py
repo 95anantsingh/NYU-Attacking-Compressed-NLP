@@ -21,6 +21,7 @@ import argparse
 from allennlp.data.data_loaders import SimpleDataLoader
 import torch.nn as nn
 import pickle
+import numpy as np
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-t", help = "0/1")
@@ -86,31 +87,15 @@ def main():
                                                   num_layers=2,
                                                   batch_first=True))
 
-    if 'quantized' not in args.attacked:
-        model_path = "./lstm_"+args.attacked+"_sst_model/w2v_model.th"
     
-        model = LstmClassifier(word_embeddings, encoder, vocab)
+    model_path = "./lstm_"+args.attacked+"_sst_model/w2v_model.th"
 
-        with open(model_path, 'rb') as f:
-            model.cuda()
-            model.load_state_dict(torch.load(f))
-    else:
-#         model = torch.jit.load("lstm_"+args.attacked+"_sst_model/model.pt")
-        model_path = "./lstm_main_sst_model/w2v_model.th"
-    
-        model = LstmClassifier(word_embeddings, encoder, vocab)
+    model = LstmClassifier(word_embeddings, encoder, vocab)
 
-        with open(model_path, 'rb') as f:
-            model.cuda()
-            model.load_state_dict(torch.load(f))
-            
-        model.cpu()
-        model = torch.quantization.quantize_dynamic(
-            model,{nn.Linear,nn.LSTM}, dtype=torch.qint8
-        )
-        device = 'cpu'
-        print("Quantized!")
-    
+    with open(model_path, 'rb') as f:
+        model.cuda()
+        model.load_state_dict(torch.load(f))
+
     model.to(device) # rnn cannot do backwards in train mode
     
     # filter the dataset to only positive or negative examples
@@ -127,13 +112,22 @@ def main():
     f = open('uat_'+str(args.attacker)+'_'+str(args.t)+'.txt', 'r')
     triggs = f.read()
     f.close()
-    trigger = triggs.split(":")[0].split(',')
-    trig = [vocab.get_token_index(x) for x in trigger]
-    final_acc= utils.get_accuracy(model, dl, vocab, trigger_token_ids=trig, device=device)
+    trigg_list = triggs.split('|')
+    trigg_list = [x.split(":")[0].split(',') for x in trigg_list][:-1]
+    print(trigg_list)
+    final_accs = []
+    for k in trigg_list:
+        trig = [vocab.get_token_index(x) for x in k]
+        final_acc= utils.get_accuracy(model, dl, vocab, trigger_token_ids=trig, device=device)
+        final_accs.append(final_acc)
+    print(final_accs)
+    acc_without_trigg = utils.get_accuracy(model, dl, vocab, trigger_token_ids=None, device=device)
+    
+    avg_trigger_acc = np.array(final_accs).mean()
     
     f = open('eval_uat_'+str(args.attacker)+'_'+str(args.attacked)+'_'+str(args.t)+'.txt', 'w')
     
-    f.write(','.join(trigger) + ':'+ str(final_acc))
+    f.write(str(acc_without_trigg)+","+ str(avg_trigger_acc))
     f.close()
     
 if __name__ == '__main__':
