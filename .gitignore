@@ -129,7 +129,7 @@ cython_debug/
 *model
 
 # Ignore Data
-*data
+data
 
 # Ignore 
 *logs
