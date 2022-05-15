@@ -126,11 +126,19 @@ dmypy.json
 cython_debug/
 
 # Ignore models
-*_model
+
+bert/sst/*_model/**
+lstm/sst/*_model/**
+!.gitkeep
+
+
+
 
 # Ignore Data
-*data
+*data/
 
 # Ignore 
-*logs
-*.md
+*logs/
+
+# Don't ignore gitignore
+!.gitignore
