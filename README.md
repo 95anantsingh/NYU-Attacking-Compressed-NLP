@@ -1,3 +1,5 @@
+Dataset used: https://huggingface.co/datasets/sst, will be downloaded automatically on running the code
+
 How this repo is structured:
 
 -> BERT based SST attacks folder
