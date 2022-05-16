@@ -7,9 +7,9 @@ Dataset used: https://huggingface.co/datasets/sst, will be downloaded automatica
 
 How this repo is structured:
 
--> BERT based SST attacks folder
+-> BERT based SST attacks folder: see documentation [here](bert/sst/README.md)
 
--> LSTM based SST attacks folder
+-> LSTM based SST attacks folder: see documentation [here](lstm/sst/README.md)
 
 Please use the `environment.yml` with conda to get the environment setup correctly
 
