@@ -17,4 +17,6 @@ Additionally the big pretrained models are stored on a drive link: please downlo
 
 The instruction to run the code and description of the files in each folder is in a separate `README.md` inside the folder.
 
-Results: can be found in our slide deck [here](./hpml presentation_new.pdf)
+Results: can be found in our slide deck: `hpml presentation_new.pdf`
+
+Demo of attacks creation: `attack_demo`
