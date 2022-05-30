@@ -56,9 +56,9 @@ Additionally the big pretrained models are stored on a drive link: please downlo
 
 This repo is structured:
 
--> BERT based SST attacks folder: see documentation [here](bert/sst/README.md)
+-> BERT based SST attacks folder: see documentation [here](models/bert/sst/README.md)
 
--> LSTM based SST attacks folder: see documentation [here](lstm/sst/README.md)
+-> LSTM based SST attacks folder: see documentation [here](models/lstm/sst/README.md)
 <br>
 
 ## :books: Datasets
@@ -68,19 +68,19 @@ Dataset used: https://huggingface.co/datasets/sst, will be downloaded automatica
 
 ## :zap: Quick Inference
 
-The instruction to run the code and description of the files in each folder is in a separate `README.md` inside the folder.
-
 ```bash
 conda activate NLPattack
 cd models/bert/sst
 ```
+
+The instruction to run the code and description of the files in each folder is in a separate `README.md` inside the folder.
 <br>
 
 ## :blue_book: Documentation
 
-Project presentation and results can be found at [docs/presentation.pdf](https://github.com/95anantsingh/NYU-Attacking-Compressed-NLP/blob/master/docs/presentation.pdf)
+Project presentation and results can be found at [docs/presentation.pdf](docs/presentation.pdf)
 <br>
-Demo video can be downloaded from [docs/attack-demo.webm](https://github.com/95anantsingh/NYU-Attacking-Compressed-NLP/blob/master/docs/attack-demo.webm)
+Demo video can be downloaded from [docs/attack-demo.webm](docs/attack-demo.webm)
 <br>
 
 ## :scroll: License
