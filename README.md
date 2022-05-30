@@ -59,13 +59,11 @@ This repo is structured:
 -> BERT based SST attacks folder: see documentation [here](bert/sst/README.md)
 
 -> LSTM based SST attacks folder: see documentation [here](lstm/sst/README.md)
-
 <br>
 
 ## :books: Datasets
 
 Dataset used: https://huggingface.co/datasets/sst, will be downloaded automatically on running the code
-
 <br>
 
 ## :zap: Quick Inference
@@ -76,7 +74,6 @@ The instruction to run the code and description of the files in each folder is i
 conda activate NLPattack
 cd models/bert/sst
 ```
-
 <br>
 
 ## :blue_book: Documentation
@@ -84,17 +81,15 @@ cd models/bert/sst
 Project presentation and results can be found at [docs/presentation.pdf](https://github.com/95anantsingh/NYU-Attacking-Compressed-NLP/blob/master/docs/presentation.pdf)
 <br>
 Demo video can be downloaded from [docs/attack-demo.webm](https://github.com/95anantsingh/NYU-Attacking-Compressed-NLP/blob/master/docs/attack-demo.webm)
-
 <br>
 
 ## :scroll: License
 
 This repo is licensed under GPL License Version 3.0
-
 <br>
 
 ## :e-mail: Contact
 
 If you have any question, please email `anant.singh@nyu.edu` or `sp6646@nyu.edu`
 <br> 
-> This Project was part of graduate level High Performance Machine Learning course at New York University
+> This Project was part of graduate level High Performance Machine Learning course at New York University.
