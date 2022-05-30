@@ -57,9 +57,8 @@ Additionally the big pretrained models are stored on a drive link: please downlo
 
 This repo is structured:
 
--> BERT based SST attacks folder: see documentation [here](models/bert/sst/README.md)
-
--> LSTM based SST attacks folder: see documentation [here](models/lstm/sst/README.md)
+- BERT based SST attacks folder: see documentation [here](models/bert/sst/README.md)
+- LSTM based SST attacks folder: see documentation [here](models/lstm/sst/README.md)
 
 <br>
 
