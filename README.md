@@ -84,7 +84,7 @@ The instruction to run the code and description of the files in each folder is i
 
 Project presentation and results can be found at [docs/presentation.pdf](docs/presentation.pdf)
 <br>
-Demo video can be downloaded from [docs/attack-demo.webm](docs/attack-demo.webm)
+Demo video can be downloaded from [docs/attack-demo.webm](docs/attack_demo.webm)
 
 <br>
 
